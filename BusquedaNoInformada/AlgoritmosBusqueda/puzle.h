@@ -31,8 +31,8 @@ static int puzle_inicial[N][N]=
 
 static int puzle_final[N][N]=
 {
-  {1,0,7},
-  {6,2,3},
+  {1,2,7},
+  {6,0,3},
   {8,5,4}
 };
 

@@ -29,7 +29,7 @@ tEstado *estadoInicial(){
 
 /* Creacion de un estado objetivo*/
 tEstado *estadoObjetivo(){
-   return crearEstado(puzle_final,0,1);
+   return crearEstado(puzle_final,1,1);
 }
 
 /* Definicion de la funcion coste, que en este

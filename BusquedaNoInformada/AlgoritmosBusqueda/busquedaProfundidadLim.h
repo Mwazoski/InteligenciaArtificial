@@ -4,9 +4,9 @@
 #include "busquedaBase.h"
 
 /*  Busqueda en profundidad */
-int busquedaProfundidad(int limit ){
+int busquedaProfundidadLim(int limit){
     int objetivo = 0, visitados = 0;
-    
+
     tNodo *Actual = (tNodo*) calloc(1,sizeof(tNodo));
     tNodo *Inicial = nodoInicial();
 
@@ -21,7 +21,7 @@ int busquedaProfundidad(int limit ){
         EliminarPrimero(&Abiertos);
         
         objetivo = testObjetivo(Actual->estado);
-        if (!objetivo){
+        if (!objetivo && (Actual->profundidad < limit)){
             Sucesores = expandir(Actual);
             visitados++;
             Abiertos = Concatenar(Sucesores,Abiertos);
@@ -31,7 +31,7 @@ int busquedaProfundidad(int limit ){
     if (objetivo)
         dispSolucion(Actual);
     printf("Visitados = %d\n\n", visitados);
-    //ReTOCAR
+
     free(Sucesores);
     free(Inicial);
     free(Actual);
