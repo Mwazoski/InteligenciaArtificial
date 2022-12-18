@@ -31,9 +31,9 @@ static int puzle_inicial[N][N]=
 
 static int puzle_final[N][N]=
 {
-  {1,7,3},
-  {6,2,4},
-  {8,0,5}
+  {1,0,7},
+  {6,2,3},
+  {8,5,4}
 };
 
 /*  A partir de una configuracion de fichas construye un estado valido para el problema
