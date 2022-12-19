@@ -12,19 +12,21 @@ int busquedaProfundidad(){
 
     LISTA Abiertos = VACIA;
     LISTA Sucesores = VACIA;
+    LISTA Cerrados = VACIA;
 
     InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
 
     while (!esVacia(Abiertos) && !objetivo){    
-        Actual=(tNodo*) calloc(1,sizeof(tNodo));
+        Actual = (tNodo*) calloc(1,sizeof(tNodo));
         ExtraerPrimero(Abiertos,Actual, sizeof(tNodo));
-        EliminarPrimero(&Abiertos);
-        
+        EliminarPrimero(&Abiertos); // AQUI EN VEZ DE ELIMINARLO, PASARLO A CERRADO.
+
         objetivo = testObjetivo(Actual->estado);
-        if (!objetivo){
+        if (!objetivo && !esCerrado(Cerrados,Actual)){
             Sucesores = expandir(Actual);
             visitados++;
             Abiertos = Concatenar(Sucesores,Abiertos);
+            InsertarPrimero(&Cerrados,(tNodo*) Actual,sizeof(tNodo));
         }
     }
   

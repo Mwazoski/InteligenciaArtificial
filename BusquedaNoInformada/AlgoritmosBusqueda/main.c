@@ -7,6 +7,7 @@
 #include "busquedaAnchura.h"
 #include "busquedaProfundidad.h"
 #include "busquedaProfundidadLim.h"
+#include "busquedaProfundidadIter.h"
 #include "puzle.h"
 
 void manual(){
@@ -30,7 +31,8 @@ void automatico(){
     switch(opc){
         case 1: solucionFin(busquedaAnchura()); break;
         case 2: solucionFin(busquedaProfundidad()); break;
-        case 3: solucionFin(busquedaProfundidadLim(4)); break;
+        case 3: solucionFin(busquedaProfundidadLim(5)); break;
+        case 4: solucionFin(busquedaProfundidadIter()); break;
     }
     printf("\n\n");
     

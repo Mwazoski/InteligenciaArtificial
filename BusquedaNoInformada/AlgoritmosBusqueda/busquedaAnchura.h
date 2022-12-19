@@ -12,6 +12,7 @@ int busquedaAnchura(){
 
     LISTA Abiertos = VACIA;
     LISTA Sucesores = VACIA;
+    LISTA Cerrados = VACIA;
     
     InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
     
@@ -21,10 +22,12 @@ int busquedaAnchura(){
         EliminarPrimero(&Abiertos);
 
         objetivo = testObjetivo(Actual->estado);
-        if (!objetivo){
+        if (!objetivo && !esCerrado(Cerrados,Actual)){
             Sucesores = expandir(Actual);
             visitados++;
             Abiertos = Concatenar(Abiertos,Sucesores);
+            InsertarPrimero(&Cerrados,(tNodo*) Actual,sizeof(tNodo));
+
       }
    }
 

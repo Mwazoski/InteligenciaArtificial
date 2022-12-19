@@ -12,6 +12,7 @@ int busquedaProfundidadLim(int limit){
 
     LISTA Abiertos = VACIA;
     LISTA Sucesores = VACIA;
+    LISTA Cerrados = VACIA;
 
     InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
 
@@ -21,10 +22,11 @@ int busquedaProfundidadLim(int limit){
         EliminarPrimero(&Abiertos);
         
         objetivo = testObjetivo(Actual->estado);
-        if (!objetivo && (Actual->profundidad < limit)){
+        if (!objetivo && (Actual->profundidad < limit) && !esCerrado(Cerrados,Actual)){
             Sucesores = expandir(Actual);
             visitados++;
             Abiertos = Concatenar(Sucesores,Abiertos);
+            InsertarPrimero(&Cerrados,(tNodo*) Actual,sizeof(tNodo));
         }
     }
   

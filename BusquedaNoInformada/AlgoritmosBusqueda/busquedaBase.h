@@ -85,4 +85,22 @@ LISTA expandir(tNodo *nodo){
 return sucesores;
 }
 
+/*  Control de estados repetidos
+    1 = esRepetido
+    0 = No esRepetido
+*/
+int esCerrado(LISTA Cerrados, tNodo *Actual)
+{
+    int repetido = 0;
+    tNodo auxNodo;
+
+    while (!esVacia(Cerrados) && !repetido)
+    {
+        ExtraerPrimero(Cerrados, &auxNodo, sizeof(auxNodo));
+        repetido = iguales(Actual->estado, auxNodo.estado);
+        Cerrados = Cerrados->next;
+    }
+    return repetido;
+}
+
 #endif
